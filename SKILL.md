@@ -55,11 +55,12 @@ Compare the selected base template's content against the JD. For each section, n
 - Keywords present but need rephrasing to match JD language 🔄
 ### Step 4 — Rewrite the resume
 Apply changes **without changing the template's layout, formatting, or section order**. Rules:
-- Swap or add keywords naturally into existing bullet points — do NOT invent experience
+- Swap keywords, don't just append them: when adding JD-specific terms to the Skills line, remove an equal number of the lowest-relevance existing items so the line actually shrinks or holds steady — never just grows. Cap the Skills line at ~20-25 items total; if the honest overlap list is longer than that, keep the top ~25 by relevance to this JD and cut the rest, don't keep everything "just in case."
+- Do NOT invent experience
 - Match the JD's exact phrasing where possible (e.g., if JD says "cross-functional collaboration," use that, not "worked with multiple teams")
 - Quantify bullets where the user has left them vague, using reasonable prompts ("Can you share any numbers for this role? Even rough estimates help.")
 - Elevate the most relevant experience to be listed first within each role's bullets
-- Adjust the summary/objective section to mirror the role's language and seniority level
+- Adjust the summary/objective section to mirror the role's language and seniority level. Cap it at 3-4 sentences (~60-70 words); every sentence should map to one of the JD's top priority requirements from Step 2 — cut any sentence that doesn't earn its place rather than folding more achievements into it.
 - Do NOT add sections, columns, icons, or design elements
 ### Step 5 — Deliver with transparency
 Show the optimized resume content in chat AND a brief summary:

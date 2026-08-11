@@ -27,19 +27,26 @@ If unclear, ask: *"Which would help you most right now — optimizing your resum
  
 ## Module 1: ATS Resume Optimizer
  
-**Goal:** Tailor one of the user's two base resumes to pass ATS scanners and appeal to recruiters for a specific role — keeping the chosen template's layout and structure intact.
+**Goal:** Tailor one of the user's three base resumes to pass ATS scanners and appeal to recruiters for a specific role — keeping the chosen template's layout and structure intact.
  
 ### Step 1 — Collect the JD and pick the base template
  
-The user only needs to paste the job description now — do not ask for their resume, since two base templates are bundled with this skill:
+The user only needs to paste the job description now — do not ask for their resume, since three base templates are bundled with this skill:
 - `assets/resume_template_mle.tex` — ML Engineer-framed base (engineering/production systems emphasis)
 - `assets/resume_template_ds.tex` — Data Scientist-framed base (analysis/experimentation emphasis)
+- `assets/resume_template_ai.tex` — AI Engineer-framed base (agentic AI, LLM/GenAI systems, LangChain/LangGraph orchestration emphasis)
+
+**Source-of-truth priority (check before copying any of the three files):** the user maintains a git-tracked copy of these templates in their `job-search-coach` folder at `assets/resume_template_mle.tex`, `assets/resume_template_ds.tex`, and `assets/resume_template_ai.tex`. If that folder is connected in this session, treat those files as the live source of truth and use them instead of the bundled `assets/` copy in the skill package — this lets the user edit their resume content directly in that folder with no sync step needed. Only fall back to the skill's own bundled `assets/` files if the workspace folder isn't connected in the current session (e.g. on claude.ai or a session without that folder mounted).
+
 **Auto-detect which template to use** from the JD's title and language — no need to ask the user:
 - Titles/keywords like "Machine Learning Engineer," "MLOps," "production systems," "deploy," "infrastructure," "backend" → use `resume_template_mle.tex`
 - Titles/keywords like "Data Scientist," "Analytics," "experimentation," "A/B testing," "insights," "statistical modeling" → use `resume_template_ds.tex`
-- If the JD is genuinely mixed or the title is ambiguous (e.g. "Applied Scientist," "AI Engineer"), pick based on which base template's existing bullets have more natural keyword overlap with the JD — don't ask the user to choose, since they've asked to skip that step. Just briefly state which one you picked and why (one sentence) so it's not a silent decision.
+- Titles/keywords like "AI Engineer," "Agentic AI," "LLM Engineer," "GenAI," "AI Applications," "agent orchestration," "multi-agent systems" → use `resume_template_ai.tex`
+- If the JD is genuinely mixed or the title is ambiguous, pick based on which base template's existing bullets have more natural keyword overlap with the JD — don't ask the user to choose, since they've asked to skip that step. Just briefly state which one you picked and why (one sentence) so it's not a silent decision. Note that `resume_template_ai.tex` already leads with the fraud-detection assessment-agent bullet active (GPT-4, Azure Speech-to-Text, NVIDIA NeMo) rather than commented, since it's the strongest agentic-AI proof point in the user's background — keep that in mind when judging overlap for AI-framed roles.
 - If a JD arrives with no title at all and the body is too thin to infer from, that's the one case worth a quick clarifying question.
 Copy the chosen file to the workspace as the working copy for this session — never edit the files under `assets/` directly during tailoring (see Step 6's note on updating the base templates separately).
+
+**Contact email — new grad / university-friendly roles:** all three templates have a commented `.edu` email line right under the `.com` one in the header (`pkumar7@students.kennesaw.edu`). If the JD reads as new-grad, university recruiting, campus hire, or otherwise explicitly student/early-career friendly, swap it in: comment out the `.com` line and uncomment the `.edu` line. Otherwise leave the `.com` email active as default.
  
 ### Step 2 — Analyze the JD like a senior recruiter
  
@@ -60,18 +67,19 @@ Apply changes **without changing the template's layout, formatting, or section o
 - Match the JD's exact phrasing where possible (e.g., if JD says "cross-functional collaboration," use that, not "worked with multiple teams")
 - Quantify bullets where the user has left them vague, using reasonable prompts ("Can you share any numbers for this role? Even rough estimates help.")
 - Elevate the most relevant experience to be listed first within each role's bullets
+- **Preserve bullet meaning when aligning to JD keywords.** Rephrasing a legacy bullet to pick up JD language should stay a rewording of the same underlying claim — same scope, same mechanism, same outcome. Don't flip or stretch what actually happened (e.g. don't turn "built a batch pipeline" into "built a real-time streaming system" just because the JD says "real-time"). If a bullet can't honestly absorb a keyword without changing its meaning, leave the keyword out of that bullet rather than distort it — it can go in the Skills line instead if it's a genuine tool/skill match.
 - Adjust the summary/objective section to mirror the role's language and seniority level. Cap it at 3-4 sentences (~60-70 words); every sentence should map to one of the JD's top priority requirements from Step 2 — cut any sentence that doesn't earn its place rather than folding more achievements into it.
 - Do NOT add sections, columns, icons, or design elements
 ### Step 5 — Deliver with transparency
 Show the optimized resume content in chat AND a brief summary:
-- Which base template was used (DS or MLE) and why
+- Which base template was used (DS, MLE, or AI) and why
 - What changed and why
 - Which keywords were added/repositioned
 - ATS match score estimate (Low / Medium / High) with rationale
 - 1-2 things the user should follow up on (e.g., certifications to add, numbers to fill in)
 ### Step 6 — Generate the LaTeX one-pager PDF
  
-After showing the resume in chat, always generate a downloadable PDF built from the base template selected in Step 1 (`assets/resume_template_mle.tex` or `assets/resume_template_ds.tex`). This template defines the visual identity (fonts, spacing, section rules, custom `\resumeItem`/`\resumeSubheading`/`\resumeProjectHeading` macros) — never redesign it, only edit the content between the existing commands.
+After showing the resume in chat, always generate a downloadable PDF built from the base template selected in Step 1 (`assets/resume_template_mle.tex`, `assets/resume_template_ds.tex`, or `assets/resume_template_ai.tex`). This template defines the visual identity (fonts, spacing, section rules, custom `\resumeItem`/`\resumeSubheading`/`\resumeProjectHeading` macros) — never redesign it, only edit the content between the existing commands.
  
 **Step 6a — Check the toolchain once per session:**
 ```bash
@@ -82,7 +90,7 @@ If `pdflatex` is missing, tell the user this environment can't compile LaTeX and
 **Step 6b — Copy the selected template and edit content only:**
 ```bash
 mkdir -p /tmp/resume_build
-cp /mnt/skills/user/job-search-coach/assets/resume_template_<mle_or_ds>.tex /tmp/resume_build/resume.tex
+cp /mnt/skills/user/job-search-coach/assets/resume_template_<mle_or_ds_or_ai>.tex /tmp/resume_build/resume.tex
 ```
 Use `str_replace` to update `/tmp/resume_build/resume.tex` with the JD-tailored content from Steps 2-4 (summary, skills, experience bullets, projects). Preserve every macro, brace, and structural line exactly — only the human-readable text inside `\resumeItem{...}`, `\resumeSubheading{...}{...}{...}{...}`, section headers, and the header block should change.
  
@@ -114,7 +122,7 @@ pdfinfo resume.pdf | grep Pages
 - Save the final compiled file to `/mnt/user-data/outputs/optimized_resume.pdf`
 - Also copy the final `.tex` to `/mnt/user-data/outputs/optimized_resume.tex` so the user has an editable source, not just a flattened PDF
 - After generating, call `present_files` with both the `.pdf` and `.tex`
-- If the user says something like "update my DS/MLE base resume" (as opposed to "tailor this for a JD"), that means overwriting `assets/resume_template_ds.tex` or `assets/resume_template_mle.tex` itself with new baseline content — confirm which of the two they mean before overwriting, since it affects every future tailoring session
+- If the user says something like "update my DS/MLE/AI base resume" (as opposed to "tailor this for a JD"), that means overwriting `assets/resume_template_ds.tex`, `assets/resume_template_mle.tex`, or `assets/resume_template_ai.tex` itself with new baseline content — confirm which of the three they mean before overwriting, since it affects every future tailoring session
 ### Rules
 - Never fabricate experience, titles, or companies
 - If a required keyword from the JD doesn't exist anywhere in their background, flag it honestly: *"The JD requires [X]. I can't add this without misrepresenting you — here's how to address it in a cover letter instead."*
@@ -297,27 +305,16 @@ Close with:
  
 ## Project Bank
 
-Beyond the projects already active in the base templates (ModelGate, ClinicalRAG, CrisisQuant, GraspiX), the following are additional real projects the user can swap in when a JD calls for them. Never invent projects beyond this list — only use what's documented here or already in the base templates. When a JD's domain matches one of these more closely than what's currently active in the template, swap it in following the same `\resumeProjectHeading` / `\resumeItemListStart` pattern used elsewhere in Module 1.
+All candidate projects (ModelGate, ClinicalRAG active by default; SmallBiz, GraspiX, Reflect AI, CredBud, CrisisQuant commented out — exact active/commented mix varies slightly per template) live directly in the Projects section of all three `assets/resume_template_*.tex` files — commented blocks, not duplicated here, so there's one source of truth and no drift between what's in the template and what's described in this skill. Never invent a project beyond what's already commented in the templates.
 
-**Reflect AI** — AI-based daily journal analyzer. Fine-tuning, LLM, RAG. `https://github.com/prad101/reflect-ai`
-Use when a JD touches sentiment/emotion analysis, mental health or wellness tech, conversational AI with memory/context, or RAG-based personalization.
-```latex
-\resumeProjectHeading
-    {\textbf{\href{https://github.com/prad101/reflect-ai}{\underline{Reflect AI}} -- AI-Based Daily Journal Analyzer} $|$ RoBERTa Fine-tune, LLM, RAG $|$ \textit{Personal Project}}{}
-    \resumeItemListStart
-      \resumeItem{Fine-tuned RoBERTa and a custom-class Go-Emotions RoBERTa model for sentiment and emotion detection on daily journal entries, then used RAG for historical context awareness to generate empathetic LLM responses.}
-    \resumeItemListEnd
-```
+When a JD's domain matches a commented project more closely than one of the currently active ones, swap it in: uncomment the matching `\resumeProjectHeading` block and comment out (or drop, if space-constrained) the least-relevant currently-active one. Match on domain overlap with the JD, e.g.:
+- Reflect AI (RoBERTa fine-tune, LLM, RAG) → sentiment/emotion analysis, mental health/wellness tech, conversational AI with memory, RAG-based personalization
+- CredBud (NLP/NER, Flask, REST API) → fintech, recommendation/ranking systems, NLP query understanding, backend API dev
+- CrisisQuant (Databricks, Delta Lake, MLflow) → data engineering/analytics platforms, anomaly detection, humanitarian/nonprofit tech
+- GraspiX (PyTorch, CV) → computer vision roles
+- SmallBiz (LangChain, Claude API, RAG) → agentic AI, multi-agent systems, LLM orchestration
 
-**CredBud** — Credit card recommendation system. NLP (NER), SQLite, REST API, Flask. `https://github.com/prad101/credbud`
-Use when a JD touches fintech, recommendation/ranking systems, NLP query understanding, or backend API development.
-```latex
-\resumeProjectHeading
-    {\textbf{\href{https://github.com/prad101/credbud}{\underline{CredBud}} -- Credit Card Recommendation System} $|$ NLP (NER), Flask, REST API $|$ \textit{Personal Project}}{}
-    \resumeItemListStart
-      \resumeItem{Built a credit card recommendation system combining NER-based query understanding with a greedy ranking algorithm, served through a Flask REST API and web interface.}
-    \resumeItemListEnd
-```
+Read the templates' current commented/active state fresh each session rather than assuming — the user may have already toggled which projects are active.
 
 ---
 

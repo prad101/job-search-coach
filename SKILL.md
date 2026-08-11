@@ -120,6 +120,9 @@ pdfinfo resume.pdf | grep Pages
 - If a required keyword from the JD doesn't exist anywhere in their background, flag it honestly: *"The JD requires [X]. I can't add this without misrepresenting you — here's how to address it in a cover letter instead."*
 - Keep the user's voice. Don't make it sound like a different person wrote it.
 - Always produce the compiled PDF (and its `.tex` source) — never skip Step 6 even if the chat output looks complete.
+
+**Step 6d — Balance page fill**
+ After the one-page check passes: run grep -c '\\resumeItem\|\\resumeSubheading\|\\resumeProjectHeading' resume.tex and compare to the same count on the untouched base template. If the tailored resume has 20%+ fewer structural elements than the base template, that's a signal of likely whitespace — convert to image (pdftoppm -jpeg -r 100) and visually confirm. If a gap exists, loosen the tightened \vspace constants proportionally, or restore a bullet/project that was trimmed only for page-fit. Skip the image render entirely if the item count is within ~20% of the base template's — not worth the cost for a resume that's probably fine.
 ---
  
 ## Module 2: LinkedIn Quick Feedback
@@ -292,6 +295,32 @@ Close with:
 - An offer to go deeper on any specific week or prep area
 ---
  
+## Project Bank
+
+Beyond the projects already active in the base templates (ModelGate, ClinicalRAG, CrisisQuant, GraspiX), the following are additional real projects the user can swap in when a JD calls for them. Never invent projects beyond this list — only use what's documented here or already in the base templates. When a JD's domain matches one of these more closely than what's currently active in the template, swap it in following the same `\resumeProjectHeading` / `\resumeItemListStart` pattern used elsewhere in Module 1.
+
+**Reflect AI** — AI-based daily journal analyzer. Fine-tuning, LLM, RAG. `https://github.com/prad101/reflect-ai`
+Use when a JD touches sentiment/emotion analysis, mental health or wellness tech, conversational AI with memory/context, or RAG-based personalization.
+```latex
+\resumeProjectHeading
+    {\textbf{\href{https://github.com/prad101/reflect-ai}{\underline{Reflect AI}} -- AI-Based Daily Journal Analyzer} $|$ RoBERTa Fine-tune, LLM, RAG $|$ \textit{Personal Project}}{}
+    \resumeItemListStart
+      \resumeItem{Fine-tuned RoBERTa and a custom-class Go-Emotions RoBERTa model for sentiment and emotion detection on daily journal entries, then used RAG for historical context awareness to generate empathetic LLM responses.}
+    \resumeItemListEnd
+```
+
+**CredBud** — Credit card recommendation system. NLP (NER), SQLite, REST API, Flask. `https://github.com/prad101/credbud`
+Use when a JD touches fintech, recommendation/ranking systems, NLP query understanding, or backend API development.
+```latex
+\resumeProjectHeading
+    {\textbf{\href{https://github.com/prad101/credbud}{\underline{CredBud}} -- Credit Card Recommendation System} $|$ NLP (NER), Flask, REST API $|$ \textit{Personal Project}}{}
+    \resumeItemListStart
+      \resumeItem{Built a credit card recommendation system combining NER-based query understanding with a greedy ranking algorithm, served through a Flask REST API and web interface.}
+    \resumeItemListEnd
+```
+
+---
+
 ## General Principles Across All Modules
  
 - **Be honest, not nice.** The user needs real feedback that helps them, not encouragement that wastes their time.

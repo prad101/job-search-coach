@@ -134,9 +134,12 @@ pdfinfo resume.pdf | grep Pages
   3. Re-check `Pages` after each change. Never go below 10pt body text or below 0.5in margins to force a fit — if it still doesn't fit after steps 1-2, tell the user rather than degrading readability further.
 - Report to the user exactly what (if anything) was cut or tightened to make it fit one page, per the auto-condense preference they've set for this skill.
 **Output rules:**
-- Save the final compiled file to `/mnt/user-data/outputs/optimized_resume.pdf`
-- Also copy the final `.tex` to `/mnt/user-data/outputs/optimized_resume.tex` so the user has an editable source, not just a flattened PDF
-- After generating, call `present_files` with both the `.pdf` and `.tex`
+- Save the final compiled files into the user's git-tracked `job-search-coach` folder (when connected in this session) at `cv_outputs/{company_name}/{role_name}/`, using:
+  - `Pradyumna_Kumar_Resume.pdf`
+  - `resume.tex`
+- Derive `{company_name}` and `{role_name}` from the JD itself (company name as given, role name as the job title). Before creating a new company folder, do a quick lookup of `cv_outputs/` to check whether a folder for that company already exists (case-insensitive, allow for minor naming variants) — reuse the existing folder name if found rather than creating a near-duplicate. If the company name genuinely can't be determined from the JD, ask the user rather than guessing.
+- If `job-search-coach` isn't connected in this session (no persistent folder available), fall back to saving as `/mnt/user-data/outputs/optimized_resume.pdf` and `/mnt/user-data/outputs/optimized_resume.tex` instead.
+- After generating, call `present_files` with both the `.pdf` and `.tex`.
 - If the user says something like "update my DS/MLE/AI base resume" (as opposed to "tailor this for a JD"), that means overwriting `assets/resume_template_ds.tex`, `assets/resume_template_mle.tex`, or `assets/resume_template_ai.tex` itself with new baseline content — confirm which of the three they mean before overwriting, since it affects every future tailoring session
 ### Rules
 - Never fabricate experience, titles, or companies

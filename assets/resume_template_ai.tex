@@ -1,0 +1,206 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{00pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\huge \scshape Pradyumna Kumar} \\ \vspace{2pt}
+     \small Somerset, NJ (Open to relocate) $|$ \small 943-224-6350 $|$ \href{mailto:pradyumna.ka@gmail.com}{\underline{pradyumna.ka@gmail.com}} $|$
+     % \href{mailto:pkumar7@students.kennesaw.edu}{\underline{pkumar7@students.kennesaw.edu}} $|$
+    \href{https://linkedin.com/in/pradyum-kumar/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/prad101}{\underline{GitHub}} $|$
+    \href{https://prad101.github.io/portfolio/}{\underline{Portfolio}}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+{\footnotesize
+  \resumeSubHeadingListStart
+        \item{AI/ML Engineer with 4 years of production experience building ML systems that deliver measurable outcomes: a \$3M/year cost reduction, 60\% engagement lift, and 50\% operational savings at a high-growth SaaS company. Skilled across recommendation, NLP, and applied GenAI (RAG, LLM fine-tuning, agentic workflows), with published research in biotech.}
+    \vspace{-5pt}
+  \resumeSubHeadingListEnd
+}
+%-----------SKILLS-----------
+ \section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \footnotesize{\item{ Python, SQL, Bash, Statistical Modeling, Feature Engineering, A/B Testing, Deep Learning, NLP, Entity Resolution, LLMs (GPT, Claude, Gemini), SLMs (Llama, Qwen), RAG, Agentic AI, LangChain, LangGraph, Fine-tuning (LoRA, GRPO), PyTorch, Scikit-learn, XGBoost, LightGBM, Pandas, NumPy, OpenCV, spaCy, ETL, Airflow, Kafka, Databricks, Snowflake, AWS (S3, Redshift, SageMaker), GCP, Docker, Kubernetes, MLflow, Elasticsearch, FastAPI, Git, Jenkins, Tableau, Looker Studio.
+    }}
+    \vspace{-5pt}
+ \end{itemize}
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+\resumeSubheading
+       {AI/ML Engineer (DS-II)}{Feb. 2021 -- Aug. 2024}
+      {\href{https://www.betterplace.co.in/about-us}{\underline{BetterPlace}} -- Enterprise SaaS, Frontline Workforce Management}{Bengaluru, India}
+      \resumeItemListStart
+        \resumeItem{Replaced a \$3M/year vendor with an in-house background-verification system --  indexed 20M+ court records into Elasticsearch, fine-tuned RoBERTa for entity resolution at 95\% precision, and auto-scaled Kubernetes (KEDA).}
+        \resumeItem{Designed and ran A/B experiments on a job recommendation pipeline for 2M+ users, driving feature engineering and LightGBM modeling to a 60\% engagement lift; deployed via FastAPI, Jenkins, and Kubernetes (AWS EKS).}
+        % \resumeItem{Shipped an edge image-quality classifier for face recognition (OpenCV, SVM, ML Kit), cutting missed face matches by 85\% and eliminating \$120K/year in inference overhead.}
+        \resumeItem{Designed and delivered an AI-powered skill assessment agent using GPT-4, Azure Speech-to-Text, NVIDIA NeMo for automated fraud detection, reducing manual evaluation time by 80\% and improving candidate conversion 2x, presented to stakeholders to drive adoption.}
+        \resumeItem{Built and owned batch and streaming ETL pipelines (Airflow, Kafka) across BigQuery and Redshift, automating org-level workflows and cutting operational costs by 50\%.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Decision Scientist Intern}{Sep. 2020 -- Dec. 2020}
+      {\href{https://www.mu-sigma.com/}{\underline{Mu Sigma Inc.}}}{Bengaluru, India}
+      \resumeItemListStart
+        \resumeItem{Built an ARIMA time-series forecasting model on real-world seismic data for an oil \& gas client, cutting monitoring response time by 40\%; performed EDA on retail footfall across 5+ store locations to surface demand patterns that guided layout decisions.} 
+      \resumeItemListEnd
+
+    % \resumeSubheading
+    %   {IOT Intern}{Feb. 2020 -- Apr. 2020}
+    %   {\href{https://www.volvoce.com/global/en/about-us/who-we-are/our-locations/bangalore/}{\underline{Volvo CE}}}{Bengaluru, India}
+    %   \resumeItemListStart
+    %     \resumeItem{Deployed a Python-based edge computing solution on Raspberry Pi at Volvo CE, monitoring real-time telemetry from excavator tightening tools on the factory floor -- hands-on industrial IoT experience with operational data collection and edge device deployment.}
+    %   \resumeItemListEnd
+    \vspace{-5pt}
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\textbf{\href{https://github.com/prad101/ModelGate-Hackathon}{\underline{ModelGate}} -- Contract-Aware AI Routing} $|$ LLM Fine-tune (LoRA), FastAPI $|$ \textit{3rd, KSU Hackathon '26}}{}
+        \resumeItemListStart
+          \resumeItem{Built an intelligent routing system that ingests enterprise contracts, extracts compliance constraints, and routes LLM queries to the optimal model -- reducing inference cost by 59\% with under 5\% accuracy tradeoff.}
+        \resumeItemListEnd
+    % \resumeProjectHeading
+    %     {\textbf{\href{https://github.com/prad101/clinical_vector_search}{\underline{ClinicalRAG}} -- Clinical Vector Search Pipeline} $|$ PySpark, FAISS/HNSW, RAG $|$ \textit{KSU C-Day Fall 2025}}{}
+    %     \resumeItemListStart
+    %       \resumeItem{Built a retrieval pipeline over MTSamples medical records (PySpark, FAISS/HNSW, hybrid BM25+vector) with differential privacy and a homomorphic-encryption POC for semantic search over PHI.}
+    %     \resumeItemListEnd
+    \resumeProjectHeading
+        {\textbf{\href{https://github.com/prad101/smallbiz}{\underline{SmallBiz}} -- Multi-Agent AI Assistant} $|$ LangChain, Claude API, RAG $|$ \textit{Hacklanta '26}}{}
+        \resumeItemListStart
+          \resumeItem{Built a multi-agent assistant (LangChain, Anthropic Claude API) automating data extraction, compliance workflows, and resource allocation for small businesses through agentic task orchestration.}
+        \resumeItemListEnd
+    % \resumeProjectHeading        
+    %     {\textbf{\href{https://github.com/prad101/graspix-handheld-recognition}{\underline{GraspiX}} -- Hand-Held Object \& Grasp Recognition} $|$ PyTorch, Computer Vision $|$ \textit{Academic Project}}{}
+    %         \resumeItemListStart
+    %            \resumeItem{Built a deep-learning system for object detection and grasp classification on handheld items in PyTorch, evaluating model performance across object categories and viewpoints.}
+    %          \resumeItemListEnd
+    % \resumeProjectHeading
+    %     {\textbf{\href{https://github.com/prad101/reflect-ai}{\underline{Reflect AI}} -- AI-Based Daily Journal Analyzer} $|$ RoBERTa Fine-tune, LLM, RAG $|$ \textit{Academic Project}}{}
+    %     \resumeItemListStart
+    %         \resumeItem{Fine-tuned RoBERTa and a custom-class Go-Emotions RoBERTa model for sentiment and emotion detection on daily journal entries, then used RAG for historical context awareness to generate empathetic LLM responses.}
+    %     \resumeItemListEnd
+    % \resumeProjectHeading
+    %     {\textbf{\href{https://github.com/prad101/credbud}{\underline{CredBud}} -- Credit Card Recommendation System} $|$ NLP (NER), Flask, REST API $|$ \textit{Academic Project}}{}
+    %     \resumeItemListStart
+    %       \resumeItem{Built a credit card recommendation system combining NER-based query understanding with a greedy ranking algorithm, served through a Flask REST API and web interface.}
+    %     \resumeItemListEnd
+    % \resumeProjectHeading
+    %     {\textbf{\href{https://github.com/prad101/crisis_quant}{\underline{CrisisQuant}} -- Humanitarian Aid Intelligence} $|$ Databricks, Delta Lake, MLflow, Isolation Forest $|$ \textit{Hacklytics '26}}{}
+    %     \resumeItemListStart
+    %       \resumeItem{Built an anomaly-detection pipeline over 6 humanitarian datasets on Databricks Delta Lake, flagging 10+ funding anomalies surfaced through an MLflow-tracked Plotly forecasting dashboard.}
+    %     \resumeItemListEnd
+    \vspace{-5pt}
+  \resumeSubHeadingListEnd
+
+%-----------RESEARCH-----------
+\section{Research}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Machine Learning Researcher}{May 2025 -- May 2026}
+      {\href{https://www.linkedin.com/groups/14207350/}{\underline{Kennesaw State University}} {\small\normalfont\textit{(Part-time)}}}{Atlanta, GA}
+      \resumeItemListStart
+        \resumeItem{Fine-tuned a Llama-3.2-1B (LoRA) on DementiaBank clinical speech for privacy-preserving, on-device Alzheimer's detection prototype, reaching 70\% F1 on a held-out benchmark and zero PHI leaving the environment.}
+        \resumeItem{Engineered adversarial attacks against 6 neural and pretrained vision models in PyTorch, degrading model confidence up to 30\%, then designed mitigations that recovered 90\% of lost accuracy.}
+        \resumeItem{{\href{https://doi.org/10.3390/ijms27041989}{\underline{Published research}}} using ML, GPU-accelerated simulations, and statistical visualizations (seaborn, ggplot2) to model binding mechanisms, achieving 10x speedup over CPU baselines and 5 novel targets for wet lab validation.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Kennesaw State University}{Atlanta, GA}
+      {M.S. Computer Science --- CGPA: 3.9/4}{May 2026}
+      \vspace{-2pt}
+    \resumeSubheading
+      {Bangalore Institute of Technology}{Bengaluru, India}
+      {B.E. Computer Science --- CGPA: 3.66/4}{Aug. 2020}
+      % \footnotesize{\item{\href{https://doi.org/10.17577/IJERTV9IS060661}{\underline{Inventory Management Using ML (Demand Forecasting)}} -- IJERT, 2020. 80 citations.}}
+      \vspace{-5pt}
+  \resumeSubHeadingListEnd
+\end{document}

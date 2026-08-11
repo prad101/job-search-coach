@@ -47,6 +47,21 @@ The user only needs to paste the job description now — do not ask for their re
 Copy the chosen file to the workspace as the working copy for this session — never edit the files under `assets/` directly during tailoring (see Step 6's note on updating the base templates separately).
 
 **Contact email — new grad / university-friendly roles:** all three templates have a commented `.edu` email line right under the `.com` one in the header (`pkumar7@students.kennesaw.edu`). If the JD reads as new-grad, university recruiting, campus hire, or otherwise explicitly student/early-career friendly, swap it in: comment out the `.com` line and uncomment the `.edu` line. Otherwise leave the `.com` email active as default.
+
+**Location — mirror the closest relocation-ready city:** the header defaults to `Somerset, NJ (Open to relocate)`, which is also his actual current location (NY Metro area). The user can relocate immediately to six other cities where he has friends already: Atlanta GA, Dallas TX, Chicago IL, Los Angeles CA, San Francisco CA, St Louis MO. For every tailored resume, extract the job's location from the JD and set the header location to whichever is closest to the job — either the default Somerset, NJ (if the job is in the Northeast/NY Metro area, since that's already where he is) or one of the six relocation cities (if the job is elsewhere in the US) — this signals proximity to the role, not "open to relocate anywhere."
+- If the JD is remote (US) with no office location tied to it, leave the default `Somerset, NJ (Open to relocate)` as-is — don't guess a city for a remote role.
+- If the JD lists a specific city/state or a company HQ region, pick the nearest of the six by real-world geography, not just same-state matching. Rough regional starting points (use judgment for borderline states, not a rigid lookup):
+  - Northeast / Mid-Atlantic (NY, NJ, CT, MA, PA, DC, MD, VA and similar) → keep the default `Somerset, NJ (Open to relocate)` as-is. Somerset, NJ is itself in this region, so it's already the closest match — don't swap to one of the six relocation cities here, since that would put him further from the job than he actually is.
+  - Southeast (GA, FL, SC, NC, TN, AL, MS) → Atlanta, GA
+  - South-Central (TX, OK, LA, AR) → Dallas, TX
+  - Upper Midwest / Great Lakes (IL, WI, MI, IN, OH, MN) → Chicago, IL
+  - Central Midwest / Plains (MO, KS, NE, IA) → St Louis, MO
+  - Mountain / Southwest (AZ, NM, NV, CO, UT) → Los Angeles, CA (or Dallas, TX if clearly closer, e.g. for AZ/NM roles near the TX border)
+  - Pacific Northwest / Northern CA (WA, OR, Northern California incl. SF Bay Area) → San Francisco, CA
+  - Southern California and nearby (Southern CA, San Diego) → Los Angeles, CA
+  - If multiple offices are listed, use the one most relevant to the role (e.g. the office the JD is actually hiring for) rather than defaulting to HQ.
+- Keep the `(Open to relocate)` phrasing intact — only swap the city/state, e.g. `Atlanta, GA (Open to relocate)`.
+- Mention the swap briefly in the Step 5 summary so it's not a silent change (e.g. "Set location to Chicago, IL to mirror the job's Midwest location").
  
 ### Step 2 — Analyze the JD like a senior recruiter
  

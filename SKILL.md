@@ -140,6 +140,7 @@ pdfinfo resume.pdf | grep Pages
 - Derive `{company_name}` and `{role_name}` from the JD itself (company name as given, role name as the job title). Before creating a new company folder, do a quick lookup of `cv_outputs/` to check whether a folder for that company already exists (case-insensitive, allow for minor naming variants) — reuse the existing folder name if found rather than creating a near-duplicate. If the company name genuinely can't be determined from the JD, ask the user rather than guessing.
 - If `job-search-coach` isn't connected in this session (no persistent folder available), fall back to saving as `/mnt/user-data/outputs/optimized_resume.pdf` and `/mnt/user-data/outputs/optimized_resume.tex` instead.
 - After generating, call `present_files` with both the `.pdf` and `.tex`.
+- **Log the application to the Reachout Tracker.** If `assets/Reachout_Tracker.xlsx` exists in the connected `job-search-coach` folder, add or update a row on its "Reachout Tracker" sheet: `Company`, `Role`, `Priority` (default `Medium` unless the user has said otherwise), `Applied Date` (today, MM/DD/YYYY). Check first whether a row for that company+role already exists (case-insensitive) and update it in place rather than duplicating. Use openpyxl directly (`load_workbook` → find/append row → `save`) — no formulas are involved, so no recalc step is needed. Don't call this out with a lot of ceremony, one short line is enough (e.g. "Logged to the reachout tracker.").
 - If the user says something like "update my DS/MLE/AI base resume" (as opposed to "tailor this for a JD"), that means overwriting `assets/resume_template_ds.tex`, `assets/resume_template_mle.tex`, or `assets/resume_template_ai.tex` itself with new baseline content — confirm which of the three they mean before overwriting, since it affects every future tailoring session
 ### Rules
 - Never fabricate experience, titles, or companies
@@ -319,6 +320,21 @@ Close with:
 - The 3 things that will most likely determine if they get the offer
 - The single most common mistake people make preparing for this type of role
 - An offer to go deeper on any specific week or prep area
+---
+
+## Outreach Tracking
+
+**Goal:** Keep `assets/Reachout_Tracker.xlsx` (sheet "Reachout Tracker") up to date whenever the user asks for a LinkedIn connection note, LinkedIn InMail, or a cold outreach email — no separate request needed, this happens automatically as part of composing the message.
+
+After delivering the connection note / InMail / email in chat:
+- Find the recipient's row by Contact Name (case-insensitive). If they already have a row (e.g. seeded from a resume application to the same company), update it in place. Otherwise append a new row.
+- Fill in: `Contact Name`, `Channel` (`LinkedIn Connect`, `LinkedIn InMail`, or `Email`), `Reach Out Date` (today, MM/DD/YYYY), `Next Follow-up Date` (today + 10 days — inside the 1-2 week window), `Status` (`Reached Out`).
+- If Company/Role/LinkedIn URL are known from context (e.g. the recipient's profile link was shared, or this outreach is tied to a role already in the sheet), fill those in too rather than leaving them blank.
+- Use openpyxl directly (`load_workbook` → find/append row → `save`) — no formulas involved, so no recalc step needed.
+- One short confirmation line is enough (e.g. "Logged to the reachout tracker, follow-up flagged for [date].") — don't recap the whole row back to the user.
+
+This is lightweight: opening a small xlsx, appending or editing one row, and saving takes well under a second and adds negligible overhead to the outreach request itself.
+
 ---
  
 ## Project Bank

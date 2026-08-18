@@ -335,6 +335,26 @@ After delivering the connection note / InMail / email in chat:
 
 This is lightweight: opening a small xlsx, appending or editing one row, and saving takes well under a second and adds negligible overhead to the outreach request itself.
 
+**Standing templates.** Unless the user specifies otherwise, draft connection notes, InMails, and outreach emails from these templates. Both share the same three-part backbone — background, interest, ask — sourced honestly from the user's real experience and something specific about the recipient's role or company, never generic filler.
+
+LinkedIn connection note (must stay at or under 300 characters):
+```
+Hi [Name], I recently applied for the [Role] role at [Company]. [Background: degree/experience + years + relevant domain]. I'm curious about [specific detail tied to their work/mission] and would love to connect.
+```
+
+InMail / cold email (3-4 sentences, keep it brief — this is not the place to write a cover letter):
+```
+Hi [Name],
+
+I recently applied for the [Role] role at [Company] and wanted to reach out directly. [Background: degree/experience + years + relevant domain, tied to something specific about the role or their work]. I would welcome the chance to connect and learn more about [team/company detail].
+
+Best,
+Pradyumna Kumar
+[email, only for email — omit for InMail]
+```
+
+Always lead with "I recently applied for the [Role] role at [Company]" when the user has actually applied — it signals a genuine applicant reaching out, not cold networking, and it's the single biggest lever for response rate observed across this user's outreach so far.
+
 ---
  
 ## Project Bank

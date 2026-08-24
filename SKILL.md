@@ -44,6 +44,7 @@ The user only needs to paste the job description now — do not ask for their re
 - Titles/keywords like "AI Engineer," "Agentic AI," "LLM Engineer," "GenAI," "AI Applications," "agent orchestration," "multi-agent systems" → use `resume_template_ai.tex`
 - If the JD is genuinely mixed or the title is ambiguous, pick based on which base template's existing bullets have more natural keyword overlap with the JD — don't ask the user to choose, since they've asked to skip that step. Just briefly state which one you picked and why (one sentence) so it's not a silent decision. Note that `resume_template_ai.tex` already leads with the fraud-detection assessment-agent bullet active (GPT-4, Azure Speech-to-Text, NVIDIA NeMo) rather than commented, since it's the strongest agentic-AI proof point in the user's background — keep that in mind when judging overlap for AI-framed roles.
 - If a JD arrives with no title at all and the body is too thin to infer from, that's the one case worth a quick clarifying question.
+- For general software engineering roles with no ML/DS/AI framing at all (e.g. backend/full-stack roles emphasizing a specific web framework, cloud infra, or a language stack unrelated to ML), default to `resume_template_mle.tex` as the closest general engineering base, and be upfront in the Step 5 summary about which required skills genuinely aren't in the user's background rather than stretching the match.
 Copy the chosen file to the workspace as the working copy for this session — never edit the files under `assets/` directly during tailoring (see Step 6's note on updating the base templates separately).
 
 **Contact email — new grad / university-friendly roles:** all three templates have a commented `.edu` email line right under the `.com` one in the header (`pkumar7@students.kennesaw.edu`). If the JD reads as new-grad, university recruiting, campus hire, or otherwise explicitly student/early-career friendly, swap it in: comment out the `.com` line and uncomment the `.edu` line. Otherwise leave the `.com` email active as default.
@@ -75,11 +76,14 @@ Compare the selected base template's content against the JD. For each section, n
 - Keywords present ✅
 - Keywords missing or weakly represented ❌
 - Keywords present but need rephrasing to match JD language 🔄
+
+Note: if a JD requirement is phrased as an "or" list across multiple tools/frameworks (e.g. "expertise in Rails, cloud infrastructure, ReactJS, or Flutter"), check the user's background against each option separately — a strong match on just one of them satisfies the requirement, and this should be called out explicitly as a genuine match rather than treated as three separate gaps.
 ### Step 4 — Rewrite the resume
 Apply changes **without changing the template's layout, formatting, or section order**. Rules:
 - Swap keywords, don't just append them: when adding JD-specific terms to the Skills line, remove an equal number of the lowest-relevance existing items so the line actually shrinks or holds steady — never just grows. Cap the Skills line at ~20-25 items total; if the honest overlap list is longer than that, keep the top ~25 by relevance to this JD and cut the rest, don't keep everything "just in case."
 - Do NOT invent experience
-- Match the JD's exact phrasing where possible (e.g., if JD says "cross-functional collaboration," use that, not "worked with multiple teams")
+- Match the JD's exact phrasing where possible (e.g., if JD says "cross-functional collaboration," use that, not "worked with multiple teams") — but avoid echoing a full JD clause verbatim into the summary; a summary line built from two stitched-together JD phrases (e.g. "mentoring through X and driving Y beyond assigned work") reads as keyword-stuffed rather than written. Keep summary sentences to one clear idea each, phrased the way the user would actually say it, even when the underlying keyword match comes straight from the JD.
+- Don't fold a resume-bullet-level detail (like "conducted technical interviews") into the summary just because it's true and relevant — the summary should stay at the level of scope/seniority/outcome; specific credentials like that belong in an experience bullet or skills line, not stitched into a summary sentence that's already carrying two other claims.
 - Quantify bullets where the user has left them vague, using reasonable prompts ("Can you share any numbers for this role? Even rough estimates help.")
 - Elevate the most relevant experience to be listed first within each role's bullets
 - **Preserve bullet meaning when aligning to JD keywords.** Rephrasing a legacy bullet to pick up JD language should stay a rewording of the same underlying claim — same scope, same mechanism, same outcome. Don't flip or stretch what actually happened (e.g. don't turn "built a batch pipeline" into "built a real-time streaming system" just because the JD says "real-time"). If a bullet can't honestly absorb a keyword without changing its meaning, leave the keyword out of that bullet rather than distort it — it can go in the Skills line instead if it's a genuine tool/skill match.
@@ -359,7 +363,7 @@ Always lead with "I recently applied for the [Role] role at [Company]" when the 
  
 ## Project Bank
 
-All candidate projects (ModelGate, ClinicalRAG active by default; SmallBiz, GraspiX, Reflect AI, CredBud, CrisisQuant commented out — exact active/commented mix varies slightly per template) live directly in the Projects section of all three `assets/resume_template_*.tex` files — commented blocks, not duplicated here, so there's one source of truth and no drift between what's in the template and what's described in this skill. Never invent a project beyond what's already commented in the templates.
+All candidate projects (ModelGate, ClinicalRAG active by default; SmallBiz, GraspiX, Reflect AI, CredBud, CrisisQuant, SafeCodeChecker commented out — exact active/commented mix varies slightly per template) live directly in the Projects section of all three `assets/resume_template_*.tex` files — commented blocks, not duplicated here, so there's one source of truth and no drift between what's in the template and what's described in this skill. Never invent a project beyond what's already commented in the templates.
 
 When a JD's domain matches a commented project more closely than one of the currently active ones, swap it in: uncomment the matching `\resumeProjectHeading` block and comment out (or drop, if space-constrained) the least-relevant currently-active one. Match on domain overlap with the JD, e.g.:
 - Reflect AI (RoBERTa fine-tune, LLM, RAG) → sentiment/emotion analysis, mental health/wellness tech, conversational AI with memory, RAG-based personalization
@@ -367,6 +371,7 @@ When a JD's domain matches a commented project more closely than one of the curr
 - CrisisQuant (Databricks, Delta Lake, MLflow) → data engineering/analytics platforms, anomaly detection, humanitarian/nonprofit tech
 - GraspiX (PyTorch, CV) → computer vision roles
 - SmallBiz (LangChain, Claude API, RAG) → agentic AI, multi-agent systems, LLM orchestration
+- SafeCodeChecker (TypeScript, Ollama, VS Code extension) → frontend/TypeScript/React-adjacent roles, developer tooling, VS Code/IDE extensions, AppSec/security-focused engineering roles, general software engineering roles with no ML/DS overlap where a frontend-language proof point is otherwise missing
 
 Read the templates' current commented/active state fresh each session rather than assuming — the user may have already toggled which projects are active.
 

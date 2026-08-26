@@ -7,6 +7,8 @@ description: >
 # Job Search Coach
  
 A four-module job search coaching skill. When triggered, identify which module(s) the user needs and follow the instructions for that module. You can run multiple modules in one session if the user wants.
+
+**Current status (check the date each session):** the user completed his M.S. in Computer Science at Kennesaw State in May 2026. Once the session date is May 2026 or later, he is a graduate, not a student finishing a degree — use past tense in cover letters, outreach, and any generated prose ("I recently completed my M.S. in Computer Science at Kennesaw State" or "I completed my M.S. ... this May"), never "I'll finish my M.S. this May" or "I'm finishing my M.S." The resume/education section itself doesn't need changes (the May 2026 date is still accurate), but any narrative text describing his status needs the tense fixed. If the session date is before May 2026 for some reason, future tense is still correct.
  
 ---
  
